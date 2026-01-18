@@ -10,10 +10,17 @@ import { AllWords } from './pages/AllWords';
 import { Reports } from './pages/Reports';
 import { Profile } from './pages/Profile';
 
+const LoadingScreen = () => (
+  <div className="fixed inset-0 flex flex-col items-center justify-center bg-[#F8FAFC] dark:bg-[#0B0F19] transition-colors z-50">
+    <div className="w-16 h-16 rounded-2xl bg-indigo-600 animate-pulse mb-4"></div>
+    <h1 className="text-2xl font-bold text-slate-800 dark:text-white">VocabFlow</h1>
+  </div>
+);
+
 const ProtectedRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const { currentUser, loading } = useAuth();
   
-  if (loading) return <div className="h-screen w-screen flex items-center justify-center bg-indigo-50 dark:bg-slate-900 text-indigo-500">Loading...</div>;
+  if (loading) return <LoadingScreen />;
   
   return currentUser ? <>{children}</> : <Navigate to="/login" />;
 };

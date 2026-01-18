@@ -44,23 +44,39 @@
         background: rgba(255, 255, 255, 0.1);
       }
     </style>
-<script type="importmap">
+  <script type="importmap">
 {
   "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
     "react": "https://esm.sh/react@^19.2.3",
     "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2",
+    "react/": "https://esm.sh/react@^19.2.3/",
     "firebase/": "https://esm.sh/firebase@^12.8.0/",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
     "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
     "vite": "https://esm.sh/vite@^7.3.1",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0"
+    "@vitejs/plugin-react": "https://esm.sh/@vitejs/plugin-react@^5.1.2"
   }
 }
 </script>
 </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Splash Screen: Shows immediately while React loads -->
+      <div style="position: fixed; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; background-color: #F8FAFC; transition: background-color 0.3s;" class="dark:bg-[#0B0F19]">
+         <div style="width: 64px; height: 64px; border-radius: 16px; background-color: #4f46e5; margin-bottom: 16px; animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;"></div>
+         <h1 style="font-size: 24px; font-weight: 700; color: #1e293b;" class="dark:text-white">VocabFlow</h1>
+         <style>
+           @media (prefers-color-scheme: dark) {
+             .dark\:bg-\[\#0B0F19\] { background-color: #0B0F19 !important; }
+             .dark\:text-white { color: white !important; }
+           }
+           @keyframes pulse {
+              0%, 100% { opacity: 1; }
+              50% { opacity: .5; }
+           }
+         </style>
+      </div>
+    </div>
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
